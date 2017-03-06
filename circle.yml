@@ -7,4 +7,4 @@ general:
       - master # list of branches to build
 test:
     override:
-       - maven test
+       - mvn test
