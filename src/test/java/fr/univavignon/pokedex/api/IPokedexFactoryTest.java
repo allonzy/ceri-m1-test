@@ -17,11 +17,10 @@ public class IPokedexFactoryTest {
 	IPokemonFactory pokemonFactory;
 	
 	@Rule public MockitoRule mockitoRule = MockitoJUnit.rule();
-	
 
 	@Test
 	public void createPokedex(){
-		
 		IPokedex pokedex = pokedexFactory.createPokedex(metadataProvider,pokemonFactory);
+		assertNotNull(pokedex);
 	}
 }
