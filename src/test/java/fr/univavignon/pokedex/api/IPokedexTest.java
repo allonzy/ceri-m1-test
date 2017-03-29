@@ -19,7 +19,12 @@ public class IPokedexTest {
 	@Rule public MockitoRule mockitoRule = MockitoJUnit.rule();
 	public Pokemon bulbizzare;
 	public Pokemon aquali;
-
+	
+	@Before public void mockSetUp() throws PokedexException{
+		when(pokedex.getPokemon(-1))
+		.thenThrow(new PokedexException("false exception"));
+	}
+	
 	@Before
 	public void setUp() throws PokedexException{
 		bulbizzare = pokemonFactory.createPokemon(0, 613, 64, 4000, 4);
@@ -40,7 +45,7 @@ public class IPokedexTest {
 		}
 	}
 	@Test(
-		expected=PokedexException.class
+		expected = PokedexException.class
 	)
 	public void testGetUnvalidPokemon() throws PokedexException{
 		pokedex.getPokemon(-1);
