@@ -17,24 +17,24 @@ public class IPokedexTest {
 	
 	
 	@Rule public MockitoRule mockitoRule = MockitoJUnit.rule();
-	public Pokemon pokemon1;
-	public Pokemon pokemon2;
+	public Pokemon bulbizzare;
+	public Pokemon aquali;
 
 	@Before
 	public void setUp() throws PokedexException{
-		pokemon1 = pokemonFactory.createPokemon(1, 1, 100, 1, 1);
-		pokemon2 = pokemonFactory.createPokemon(2, 2, 200, 2, 2);
+		bulbizzare = pokemonFactory.createPokemon(0, 613, 64, 4000, 4);
+		aquali = pokemonFactory.createPokemon(133, 2729, 202, 5000, 4);
 	}
 	@Test
 	public void testAddPokemon() throws PokedexException{
-		pokedex.addPokemon(pokemon1);
-		when(pokedex.getPokemon(1)).thenReturn(pokemon1);
+		pokedex.addPokemon(bulbizzare);
+		when(pokedex.getPokemon(0)).thenReturn(bulbizzare);
 		
-		assertTrue(pokedex.getPokemons().contains(pokemon1));
-		assertFalse(pokedex.getPokemons().contains(pokemon2));
+		assertTrue(pokedex.getPokemons().contains(bulbizzare));
+		assertFalse(pokedex.getPokemons().contains(aquali));
 		try {
-			assertEquals(pokemon1,pokedex.getPokemon(1));
-			assertNotEquals(pokemon2,pokedex.getPokemon(1));
+			assertEquals(bulbizzare,pokedex.getPokemon(0));
+			assertNotEquals(aquali,pokedex.getPokemon(0));
 		} catch (PokedexException e) {
 			fail("unexpected PokedexException");
 		}
