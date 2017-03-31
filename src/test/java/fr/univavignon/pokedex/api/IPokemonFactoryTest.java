@@ -18,8 +18,9 @@ public class IPokemonFactoryTest {
 	public Pokemon bulbizzare;
 	public Pokemon aquali;
 
-	@Before 
+	 
 	public void mockSetUp() throws PokedexException {
+		/**/
 		when(pokemonFactory.createPokemon(0, 613, 64, 4000, 4))
 			.thenReturn(new Pokemon(
 				0,//final int index,
@@ -48,12 +49,14 @@ public class IPokemonFactoryTest {
 				1//final double iv
 			)	
 		);
+		/**/
 	}
 	@Before
 	public void setUp() throws PokedexException{
+		mockSetUp();
+
 		bulbizzare = pokemonFactory.createPokemon(0, 613, 64, 4000, 4);
 		aquali = pokemonFactory.createPokemon(133, 2729, 202, 5000, 4);
-		
 	}
 
 	@Test
@@ -70,8 +73,8 @@ public class IPokemonFactoryTest {
 		assertEquals(613,bulbizzare.getCp());
 		assertEquals(2729,aquali.getCp());
 
-		assertEquals(64,bulbizzare.getDust());
-		assertEquals(202,aquali.getDust());
+		assertEquals(4000,bulbizzare.getDust());
+		assertEquals(5000,aquali.getDust());
 
 		assertEquals(4,bulbizzare.getCandy());
 		assertEquals(4,aquali.getCandy());
@@ -80,12 +83,12 @@ public class IPokemonFactoryTest {
 		assertEquals(186,aquali.getAttack());
 
 		assertEquals(126,bulbizzare.getDefense());
-		assertEquals(186,aquali.getDefense());
+		assertEquals(168,aquali.getDefense());
 
 		assertEquals(90,bulbizzare.getStamina());
 		assertEquals(260,aquali.getStamina());
 		
-		assertEquals(0.56,bulbizzare.getIv());
-		assertEquals(1,aquali.getIv());
+		assertEquals(0.56,bulbizzare.getIv(),0.01);
+		assertEquals(1,aquali.getIv(),0.01);
 	}
 }

@@ -4,45 +4,86 @@ import static org.junit.Assert.*;
 
 import org.junit.*;
 import org.mockito.Mock;
+import org.mockito.Spy;
+
 import static org.mockito.Mockito.*;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
 public class IPokedexTest {
+	
 	@Mock
 	IPokedex pokedex;
-	
-	@Mock
-	IPokemonFactory pokemonFactory;
-	
-	
+		
 	@Rule public MockitoRule mockitoRule = MockitoJUnit.rule();
+	
 	public Pokemon bulbizzare;
 	public Pokemon aquali;
-	
-	@Before public void mockSetUp() throws PokedexException{
+	public List<Pokemon> pokemonList;
+
+	public void mockSetUp() throws PokedexException{
+		/**/
 		when(pokedex.getPokemon(-1))
-		.thenThrow(new PokedexException("false exception"));
+			.thenThrow(new PokedexException("false exception"));
+	
+		pokemonList = new ArrayList<Pokemon>();
+		pokemonList.add(bulbizzare);
+		
+		when(pokedex.getPokemons())
+			.thenReturn(Collections.unmodifiableList(pokemonList));
+			
+		when(pokedex.getPokemon(0))
+			.thenReturn(bulbizzare);
+		/**/
+	}
+	@Before 
+	public void setUp() throws PokedexException{
+		bulbizzare = new Pokemon(
+				0,//final int index,
+				"Bulbizzare",//final String name,
+				126,//final int attack,
+				126,//final int defense,
+				90,//final int stamina,
+				613,//final int cp,
+				64,//final int hp,
+				4000,//final int dust,
+				4,//final int candy,
+				0.56//final double iv
+			);
+		aquali = new Pokemon(
+				133,//final int index,
+				"Aquali",//final String name,
+				186,//final int attack,
+				168,//final int defense,
+				260,//final int stamina,
+				2729,//final int cp,
+				202,//final int hp,
+				5000,//final int dust,
+				4,//final int candy,
+				1//final double iv
+			);
+		mockSetUp();
+		
 	}
 	
-	@Before
-	public void setUp() throws PokedexException{
-		bulbizzare = pokemonFactory.createPokemon(0, 613, 64, 4000, 4);
-		aquali = pokemonFactory.createPokemon(133, 2729, 202, 5000, 4);
-	}
+	
 	@Test
 	public void testAddPokemon() throws PokedexException{
 		pokedex.addPokemon(bulbizzare);
-		when(pokedex.getPokemon(0)).thenReturn(bulbizzare);
 		
-		assertTrue(pokedex.getPokemons().contains(bulbizzare));
-		assertFalse(pokedex.getPokemons().contains(aquali));
-		try {
-			assertEquals(bulbizzare,pokedex.getPokemon(0));
-			assertNotEquals(aquali,pokedex.getPokemon(0));
-		} catch (PokedexException e) {
-			fail("unexpected PokedexException");
-		}
+		List<Pokemon> pokeList = pokedex.getPokemons();
+		assertTrue(pokeList.contains(bulbizzare));
+		assertFalse(pokeList.contains(aquali));
+		
+		assertEquals(bulbizzare,pokedex.getPokemon(0));
+		assertNotEquals(aquali,pokedex.getPokemon(0));
+
 	}
 	@Test(
 		expected = PokedexException.class
