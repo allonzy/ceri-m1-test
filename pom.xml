@@ -33,7 +33,7 @@
 					<apiToken>${env.CODACY_API_TOKEN}</apiToken>
 					<projectToken>${env.CODACY_PROJECT_TOKEN}</projectToken>
 					<language>Java</language>
-					<coverageReportFile>${project.build.directory}/site/jacoco/jacoco.xml</coverageReportFile>
+					<coverageReportFile>target/site/jacoco/jacoco.xml</coverageReportFile>
 					<failOnMissingReportFile>false</failOnMissingReportFile>
 					<prefix>${codacy.project.prefix}</prefix>
 				</configuration>
