@@ -4,11 +4,11 @@ machine:
 general:
   branches:
     only:
-      - master # list of branches to build
+        - master # list of branches to build
 test:
     override:
-       - mvn verify
+        - mvn verify
 	post:
-   		- mvn jacoco:report
-   		- mvn com.gavinmogan:codacy-maven-plugin:coverage -DcoverageReportFile=target/site/jacoco/jacoco.xml -DprojectToken=$CODACY_PROJECT_TOKEN -DapiToken=$CODACY_API_TOKEN 
-   		- codacy-coverage-reporter -l Java -r target/site/jacoco/jacoco.xml
+        - mvn jacoco:report
+        - mvn com.gavinmogan:codacy-maven-plugin:coverage -DcoverageReportFile=target/site/jacoco/jacoco.xml -DprojectToken=$CODACY_PROJECT_TOKEN -DapiToken=$CODACY_API_TOKEN 
+        - codacy-coverage-reporter -l Java -r target/site/jacoco/jacoco.xml
