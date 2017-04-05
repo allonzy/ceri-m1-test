@@ -12,13 +12,13 @@ public class IPokedexFactoryTest {
 	private IPokedexFactory pokedexFactory;
 	
 	@Mock
-	private IPokemonMetadataProvider metadataProvider;
+	protected IPokemonMetadataProvider metadataProvider;
 	
 	@Mock
-	private IPokemonFactory pokemonFactory;
+	protected IPokemonFactory pokemonFactory;
 	
 	@Mock
-	private IPokedex pokedex;
+	protected IPokedex pokedex;
 	
 	@Rule public MockitoRule mockitoRule = MockitoJUnit.rule();
 	

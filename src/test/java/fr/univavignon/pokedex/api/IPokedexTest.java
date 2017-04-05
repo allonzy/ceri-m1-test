@@ -89,4 +89,6 @@ public class IPokedexTest {
 	public void testGetUnvalidPokemon() throws PokedexException{
 		pokedex.getPokemon(-1);
 	}
+	public void testPokemonsOrdered(){
+	}
 }

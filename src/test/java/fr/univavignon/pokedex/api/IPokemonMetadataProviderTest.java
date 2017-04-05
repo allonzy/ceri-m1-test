@@ -6,6 +6,7 @@ import static org.mockito.Mockito.when;
 
 import org.junit.Before;
 import org.junit.Rule;
+import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
@@ -19,11 +20,12 @@ public class IPokemonMetadataProviderTest {
 	private IPokemonMetadataProvider pokemonMetadataProvider;
 	@Rule public MockitoRule mockitoRule = MockitoJUnit.rule();
 	
-	@Before
 	public void mockSetUp() throws PokedexException{
+		
+		/*
 		when(pokemonMetadataProvider.getPokemonMetadata(0))
 			.thenReturn(new PokemonMetadata(
-				0,//final int index,
+				1,//final int index,
 				"Bulbizzare",//final String name,
 				126,//final int attack,
 				126,//final int defense,
@@ -39,20 +41,22 @@ public class IPokemonMetadataProviderTest {
 				260//final int stamina,
 				)
 		);
+		/**/
 	}
-	
 	@Before
 	public void setUp() throws PokedexException {
-		bulbizzare = pokemonMetadataProvider.getPokemonMetadata(0);
+		pokemonMetadataProvider = new PokemonMetadataProvider();
+		bulbizzare = pokemonMetadataProvider.getPokemonMetadata(1);
 		aquali = pokemonMetadataProvider.getPokemonMetadata(133);
+		mockSetUp();
 	}
-	
+	@Test
 	public void testGetPokemonMetadata(){
 		
 		assertNotNull(bulbizzare);
 		assertNotNull(aquali);
 
-		assertEquals(0,bulbizzare.getIndex());
+		assertEquals(1,bulbizzare.getIndex());
 		assertEquals(133,aquali.getIndex());
 
 		assertEquals("Bulbizzare",bulbizzare.getName());
