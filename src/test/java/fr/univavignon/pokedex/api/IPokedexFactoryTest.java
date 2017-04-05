@@ -9,20 +9,21 @@ import org.mockito.junit.*;
 
 public class IPokedexFactoryTest {
 	@Mock
-	IPokedexFactory pokedexFactory;
+	private IPokedexFactory pokedexFactory;
 	
 	@Mock
-	IPokemonMetadataProvider metadataProvider;
+	private IPokemonMetadataProvider metadataProvider;
 	
 	@Mock
-	IPokemonFactory pokemonFactory;
+	private IPokemonFactory pokemonFactory;
 	
 	@Mock
-	IPokedex pokedex;
+	private IPokedex pokedex;
 	
 	@Rule public MockitoRule mockitoRule = MockitoJUnit.rule();
 	
-	@Before public void mockSetUp() throws PokedexException{
+	@Before public void setUp() throws PokedexException{
+		//pokedexFactory = new PokedexFactory();
 		when(pokedexFactory.createPokedex(metadataProvider,pokemonFactory))
 			.thenReturn(pokedex);
 	}

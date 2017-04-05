@@ -14,11 +14,11 @@ import org.junit.Test;
 public class IPokemonTrainerFactoryTest {
 
 	@Mock
-	IPokedexFactory pokedexFactory;
+	private IPokedexFactory pokedexFactory;
 	@Mock 
-	IPokedex pokedex;
+	private IPokedex pokedex;
 	@Mock
-	IPokemonTrainerFactory pokemonTrainerFactory;
+	private IPokemonTrainerFactory pokemonTrainerFactory;
 	
 	@Rule public MockitoRule mockitoRule = MockitoJUnit.rule();
 

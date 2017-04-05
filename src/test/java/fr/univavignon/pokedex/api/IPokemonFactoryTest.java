@@ -12,7 +12,7 @@ import static org.mockito.Mockito.*;
 
 public class IPokemonFactoryTest {
 	@Mock
-	IPokemonFactory pokemonFactory;
+	private IPokemonFactory pokemonFactory;
 	
 	@Rule public MockitoRule mockitoRule = MockitoJUnit.rule();
 	public Pokemon bulbizzare;

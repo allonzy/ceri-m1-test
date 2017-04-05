@@ -12,11 +12,11 @@ import org.mockito.junit.MockitoRule;
 
 public class IPokemonMetadataProviderTest {
 	
-	PokemonMetadata bulbizzare;
-	PokemonMetadata aquali;
+	private PokemonMetadata bulbizzare;
+	private PokemonMetadata aquali;
 
 	@Mock
-	IPokemonMetadataProvider pokemonMetadataProvider;
+	private IPokemonMetadataProvider pokemonMetadataProvider;
 	@Rule public MockitoRule mockitoRule = MockitoJUnit.rule();
 	
 	@Before

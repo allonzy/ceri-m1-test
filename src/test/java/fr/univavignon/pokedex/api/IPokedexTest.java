@@ -4,12 +4,10 @@ import static org.junit.Assert.*;
 
 import org.junit.*;
 import org.mockito.Mock;
-import org.mockito.Spy;
 
 import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -19,7 +17,7 @@ import org.mockito.junit.MockitoRule;
 public class IPokedexTest {
 	
 	@Mock
-	IPokedex pokedex;
+	private IPokedex pokedex;
 		
 	@Rule public MockitoRule mockitoRule = MockitoJUnit.rule();
 	
