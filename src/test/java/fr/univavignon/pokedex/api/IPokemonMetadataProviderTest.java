@@ -11,6 +11,8 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
+import fr.univavignon.pokedex.imp.PokemonMetadataProvider;
+
 public class IPokemonMetadataProviderTest {
 	
 	private PokemonMetadata bulbizzare;
@@ -22,7 +24,7 @@ public class IPokemonMetadataProviderTest {
 	
 	public void mockSetUp() throws PokedexException{
 		
-		/*
+
 		when(pokemonMetadataProvider.getPokemonMetadata(0))
 			.thenReturn(new PokemonMetadata(
 				1,//final int index,
@@ -48,7 +50,7 @@ public class IPokemonMetadataProviderTest {
 		pokemonMetadataProvider = new PokemonMetadataProvider();
 		bulbizzare = pokemonMetadataProvider.getPokemonMetadata(1);
 		aquali = pokemonMetadataProvider.getPokemonMetadata(133);
-		mockSetUp();
+		//mockSetUp();
 	}
 	@Test
 	public void testGetPokemonMetadata(){
