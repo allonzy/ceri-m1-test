@@ -23,8 +23,8 @@ public class IPokedexFactoryTest {
 	@Rule public MockitoRule mockitoRule = MockitoJUnit.rule();
 	
 	@Before public void setUp() throws PokedexException{
-		pokedexFactory = new PokedexFactory();
-		//mockSetUp();
+		//pokedexFactory = new PokedexFactory();
+		mockSetUp();
 	}
 	public void mockSetUp(){
 		when(pokedexFactory.createPokedex(metadataProvider,pokemonFactory))

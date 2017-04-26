@@ -66,7 +66,7 @@ public class IPokedexTest {
 				4,//final int candy,
 				1//final double iv
 			);
-		mockSetUp();
+		//mockSetUp();
 		
 	}
 	
