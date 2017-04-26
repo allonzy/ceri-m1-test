@@ -39,6 +39,6 @@ public class PokemonMetadataProvider implements IPokemonMetadataProvider{
 	}
 	private JsonObject getResource(int index) throws IOException{
 		JsonArray resource = JsonResourceProvider.getJsonFrom(RESSOURCE_URL).getAsJsonArray();
-		return resource.get(index).getAsJsonObject();
+		return resource.get(index-1).getAsJsonObject();
 	}
 }
