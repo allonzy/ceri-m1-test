@@ -15,9 +15,8 @@ public class PokemonMetadataProvider implements IPokemonMetadataProvider{
 	private static final String RESSOURCE_URL = "https://raw.githubusercontent.com/PokemonGoF/PokemonGo-Bot/master/data/pokemon.json";
 	@Override
 	public PokemonMetadata getPokemonMetadata(int index) throws PokedexException {
-		JsonObject object;
 		try {
-			object = getResource(index);
+			JsonObject object = getResource(index);
 			return create(object);
 		} catch (IOException e) {
 			//LOG the error
