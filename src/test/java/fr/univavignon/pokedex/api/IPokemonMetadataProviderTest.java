@@ -40,8 +40,8 @@ public class IPokemonMetadataProviderTest {
 			.thenReturn(new PokemonMetadata(
 				133,//final int index,
 				"Vaporeon",//final String name,
-				186,//final int attack,
-				168,//final int defense,
+				205,//final int attack,
+				177,//final int defense,
 				260//final int stamina,
 				)
 		);
@@ -75,10 +75,10 @@ public class IPokemonMetadataProviderTest {
 			fail("the LOCALE attribute was not EN or FR, code the test for other language");
 		}
 		assertEquals(118,bulbizzare.getAttack());
-		assertEquals(186,aquali.getAttack());
+		assertEquals(205,aquali.getAttack());
 
 		assertEquals(118,bulbizzare.getDefense());
-		assertEquals(186,aquali.getDefense());
+		assertEquals(177,aquali.getDefense());
 
 		assertEquals(90,bulbizzare.getStamina());
 		assertEquals(260,aquali.getStamina());
