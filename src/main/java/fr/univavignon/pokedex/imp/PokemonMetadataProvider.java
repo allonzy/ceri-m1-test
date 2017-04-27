@@ -15,12 +15,12 @@ public class PokemonMetadataProvider implements IPokemonMetadataProvider{
 	 */
 	private static final String RESSOURCE_URL = "https://raw.githubusercontent.com/PokemonGoF/PokemonGo-Bot/master/data/pokemon.json";
 	/**
-	 * The language of the API
+	 * The language of the API, currently not in use
 	 */
 	private static final Locale LOCALE = Locale.ENGLISH;
-	public Locale getLocale(){
-		return LOCALE;
-	}
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public PokemonMetadata getPokemonMetadata(int index) throws PokedexException {
 		try {

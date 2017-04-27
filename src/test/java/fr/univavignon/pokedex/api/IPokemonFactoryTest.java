@@ -10,10 +10,12 @@ import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 import static org.mockito.Mockito.*;
 
+import java.util.Locale;
+
 public class IPokemonFactoryTest {
 	@Mock
 	private IPokemonFactory pokemonFactory;
-	
+	private Locale apiLocale = Locale.ENGLISH;
 	@Rule public MockitoRule mockitoRule = MockitoJUnit.rule();
 	public Pokemon bulbizzare;
 	public Pokemon aquali;
@@ -67,8 +69,15 @@ public class IPokemonFactoryTest {
 		assertEquals(0,bulbizzare.getIndex());
 		assertEquals(133,aquali.getIndex());
 
-		assertEquals("Bulbasaur",bulbizzare.getName());
-		assertEquals("Vaporeon",aquali.getName());
+		if(apiLocale == Locale.ENGLISH){
+			assertEquals("Bulbasaur",bulbizzare.getName());
+			assertEquals("Vaporeon",aquali.getName());
+		}else if(apiLocale == Locale.FRENCH){
+			assertEquals("Bulbizarre",bulbizzare.getName());
+			assertEquals("Aquali",aquali.getName());
+		}else{
+			fail("the LOCALE attribute was not EN or FR, code the test for other language");
+		}
 		
 		assertEquals(613,bulbizzare.getCp());
 		assertEquals(2729,aquali.getCp());
