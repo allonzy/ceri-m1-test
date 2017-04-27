@@ -20,11 +20,11 @@ public class IPokemonMetadataProviderTest {
 	
 	private PokemonMetadata bulbizzare;
 	private PokemonMetadata aquali;
-
+	private Locale apiLocale = Locale.ENGLISH;;
 	@Mock
 	private IPokemonMetadataProvider pokemonMetadataProvider;
 	@Rule public MockitoRule mockitoRule = MockitoJUnit.rule();
-	
+
 	public void mockSetUp() throws PokedexException{
 		
 		when(pokemonMetadataProvider.getPokemonMetadata(0))
@@ -45,7 +45,7 @@ public class IPokemonMetadataProviderTest {
 				260//final int stamina,
 				)
 		);
-		when(PokemonMetadataProvider.getLocale()).thenReturn(Locale.ENGLISH);
+		//when(IPokemonMetadataProvider.getLocale()).thenReturn(Locale.ENGLISH);
 		/**/
 	}
 
@@ -53,21 +53,22 @@ public class IPokemonMetadataProviderTest {
 	public void setUp() throws PokedexException {
 		mockSetUp();
 		pokemonMetadataProvider = new PokemonMetadataProvider();
+		
 		bulbizzare = pokemonMetadataProvider.getPokemonMetadata(0);
 		aquali = pokemonMetadataProvider.getPokemonMetadata(133);
 	}
 	@Test
 	public void testGetPokemonMetadata(){
+
 		assertNotNull(bulbizzare);
 		assertNotNull(aquali);
 
 		assertEquals(0,bulbizzare.getIndex());
 		assertEquals(133,aquali.getIndex());
-
-		if(PokemonMetadataProvider.getLocale() == Locale.ENGLISH){
+		if(apiLocale == Locale.ENGLISH){
 			assertEquals("Bulbasaur",bulbizzare.getName());
 			assertEquals("Vaporeon",aquali.getName());
-		}else if(PokemonMetadataProvider.getLocale() == Locale.FRENCH){
+		}else if(apiLocale == Locale.FRENCH){
 			assertEquals("Bulbizarre",bulbizzare.getName());
 			assertEquals("Aquali",aquali.getName());
 		}else{
