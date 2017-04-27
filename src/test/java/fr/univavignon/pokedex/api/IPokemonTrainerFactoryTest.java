@@ -27,6 +27,9 @@ public class IPokemonTrainerFactoryTest {
 	@Before
 	public void setUp(){
 		mockSetUp();
+		impSetUp();
+	}
+	public void impSetUp(){
 		pokemonTrainerFactory = new PokemonTrainerFactory();
 	}
 	public void mockSetUp(){

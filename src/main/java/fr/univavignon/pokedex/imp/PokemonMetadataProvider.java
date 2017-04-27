@@ -19,7 +19,13 @@ public class PokemonMetadataProvider implements IPokemonMetadataProvider{
 	 * The language of the API, currently not in use
 	 */
 	private static final Locale LOCALE = Locale.ENGLISH;
-	
+	/**
+	 * not in {@link IPokemonMetadataProvider} but may be an useful feature
+	 * @return Locale
+	 */
+	public static final Locale getLocale(){
+		return LOCALE;
+	}
 	/**
 	 * {@inheritDoc}
 	 */

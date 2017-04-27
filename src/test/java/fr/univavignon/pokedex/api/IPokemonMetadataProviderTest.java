@@ -50,12 +50,13 @@ public class IPokemonMetadataProviderTest {
 		//when(IPokemonMetadataProvider.getLocale()).thenReturn(Locale.ENGLISH);
 		/**/
 	}
-
+	public void impSetUp(){
+		pokemonMetadataProvider = new PokemonMetadataProvider();
+	}
 	@Before
 	public void setUp() throws PokedexException {
 		mockSetUp();
-		pokemonMetadataProvider = new PokemonMetadataProvider();
-		
+		impSetUp();
 		bulbizzare = pokemonMetadataProvider.getPokemonMetadata(0);
 		aquali = pokemonMetadataProvider.getPokemonMetadata(133);
 	}

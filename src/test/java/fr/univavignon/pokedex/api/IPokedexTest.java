@@ -8,6 +8,7 @@ import org.mockito.Mock;
 import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
@@ -34,47 +35,20 @@ public class IPokedexTest {
 	private Pokemon bulbizzare;
 	private Pokemon aquali;
 	private List<Pokemon> pokemonList;
-	private List<Pokemon> _pokeListOrderedByIndex;
-	private List<Pokemon> _pokeListOrderedByName;
-	private List<Pokemon> _pokeListOrderedByCp;
-	public void mockSetUp() throws PokedexException{
-		/**/
-		when(pokedex.getPokemon(-1))
-			.thenThrow(new PokedexException("false exception"));
-		when(pokedex.getPokemon(3))
-			.thenThrow(new PokedexException("false exception"));
-
-		pokemonList = new ArrayList<Pokemon>();
-		pokemonList.add(bulbizzare);
-		
-		when(pokedex.getPokemons())
-			.thenReturn(Collections.unmodifiableList(pokemonList));
-			
-		when(pokedex.getPokemon(0))
-			.thenReturn(bulbizzare);
-		setOrderedPokeListMock();
-
-		/**/
-	}
-	private void setOrderedPokeListMock(){
-		_pokeListOrderedByIndex = new ArrayList<Pokemon>();
-		_pokeListOrderedByIndex.add(bulbizzare);
-		_pokeListOrderedByIndex.add(aquali);
-		when(pokedex.getPokemons(PokemonComparators.INDEX)).thenReturn(_pokeListOrderedByIndex);
-		
-		_pokeListOrderedByName = new ArrayList<Pokemon>();
-		_pokeListOrderedByName.add(bulbizzare);
-		_pokeListOrderedByName.add(aquali);
-		when(pokedex.getPokemons(PokemonComparators.NAME)).thenReturn(_pokeListOrderedByName);
-		
-		_pokeListOrderedByCp = new ArrayList<Pokemon>();
-		_pokeListOrderedByCp.add(bulbizzare);
-		_pokeListOrderedByCp.add(aquali);
-		when(pokedex.getPokemons(PokemonComparators.CP)).thenReturn(_pokeListOrderedByCp);
-	}
-	
-	@Before 
+	@Before
 	public void setUp() throws PokedexException{
+		createPokemonSetUp();
+		mockSetUp();
+		impSetUp();
+	}
+
+	/**
+	 * Decide here wish class is tested
+	 */
+	public void impSetUp(){
+		pokedex = new Pokedex(pokemonMetadataProvider,pokemonFactory);
+	}
+	public void createPokemonSetUp() throws PokedexException{
 		bulbizzare = new Pokemon(
 				0,//final int index,
 				"Bulbasaur",//final String name,
@@ -99,10 +73,37 @@ public class IPokedexTest {
 				4,//final int candy,
 				1//final double iv
 			);
-		//mockSetUp();
-		pokedex = new Pokedex(pokemonMetadataProvider,pokemonFactory);
 	}
-	
+
+	public void mockSetUp() throws PokedexException{
+		/**/
+		when(pokedex.getPokemon(-1))
+			.thenThrow(new PokedexException("false exception"));
+		when(pokedex.getPokemon(3))
+			.thenThrow(new PokedexException("false exception"));
+		pokemonList = new ArrayList<Pokemon>();
+		pokemonList.add(bulbizzare);
+		
+		when(pokedex.getPokemons())
+			.thenReturn(Collections.unmodifiableList(pokemonList));
+			
+		when(pokedex.getPokemon(0))
+			.thenReturn(bulbizzare);
+		
+		when(pokedex.getPokemons(PokemonComparators.INDEX)).thenReturn(
+				Arrays.asList(
+						new Pokemon[]{bulbizzare,aquali}
+					));
+		when(pokedex.getPokemons(PokemonComparators.NAME)).thenReturn(
+				Arrays.asList(
+				new Pokemon[]{bulbizzare,aquali}
+			));
+		when(pokedex.getPokemons(PokemonComparators.CP)).thenReturn(
+				Arrays.asList(
+						new Pokemon[]{bulbizzare,aquali}
+					));
+	}
+
 	@Test
 	public void testAddPokemon() throws PokedexException{
 		pokedex.addPokemon(bulbizzare);
@@ -124,11 +125,7 @@ public class IPokedexTest {
 		pokedex.getPokemon(-1);
 		pokedex.getPokemon(3);
 	}
-	
-	
-	
-	
-	
+
 	@Test
 	public void testPokemonsOrderedByName(){
 		pokedex.addPokemon(bulbizzare);
