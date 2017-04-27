@@ -67,8 +67,8 @@ public class IPokemonFactoryTest {
 		assertEquals(0,bulbizzare.getIndex());
 		assertEquals(133,aquali.getIndex());
 
-		assertEquals("Bulbizzare",bulbizzare.getName());
-		assertEquals("Aquali",aquali.getName());
+		assertEquals("Bulbasaur",bulbizzare.getName());
+		assertEquals("Vaporeon",aquali.getName());
 		
 		assertEquals(613,bulbizzare.getCp());
 		assertEquals(2729,aquali.getCp());
