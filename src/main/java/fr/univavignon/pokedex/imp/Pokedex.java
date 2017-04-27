@@ -61,10 +61,9 @@ public class Pokedex implements IPokedex {
 	public Pokemon getPokemon(int id) throws PokedexException {
 		try{
 			return pokemons.get(id);
-		}catch(ArrayIndexOutOfBoundsException e1){
-			throw new PokedexException("Not a valid pokedex identifier(array out of bound)");
+		}catch(IndexOutOfBoundsException e1){
+			throw new PokedexException("Not a valid pokedex identifier(array index out of bound)");
 		}
-
 	}
 
 	@Override

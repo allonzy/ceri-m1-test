@@ -41,7 +41,9 @@ public class IPokedexTest {
 		/**/
 		when(pokedex.getPokemon(-1))
 			.thenThrow(new PokedexException("false exception"));
-	
+		when(pokedex.getPokemon(3))
+			.thenThrow(new PokedexException("false exception"));
+
 		pokemonList = new ArrayList<Pokemon>();
 		pokemonList.add(bulbizzare);
 		
@@ -117,7 +119,10 @@ public class IPokedexTest {
 		expected = PokedexException.class
 	)
 	public void testGetUnvalidPokemon() throws PokedexException{
+		pokedex.addPokemon(bulbizzare);
+		pokedex.addPokemon(aquali);
 		pokedex.getPokemon(-1);
+		pokedex.getPokemon(3);
 	}
 	
 	
