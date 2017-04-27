@@ -10,6 +10,7 @@ import static org.mockito.Mockito.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
@@ -20,12 +21,18 @@ public class IPokedexTest {
 	private IPokedex pokedex;
 		
 	@Rule public MockitoRule mockitoRule = MockitoJUnit.rule();
-	
-	public Pokemon bulbizzare;
-	public Pokemon aquali;
-	public List<Pokemon> pokemonList;
-
+	/**
+	 * Try to modify the api to get this attribute from it 
+	 */
+	private Locale apiLocale = Locale.ENGLISH;
+	private Pokemon bulbizzare;
+	private Pokemon aquali;
+	private List<Pokemon> pokemonList;
+	private List<Pokemon> _pokeListOrderedByIndex;
+	private List<Pokemon> _pokeListOrderedByName;
+	private List<Pokemon> _pokeListOrderedByCp;
 	public void mockSetUp() throws PokedexException{
+		setOrderedPokeListMock();
 		/**/
 		when(pokedex.getPokemon(-1))
 			.thenThrow(new PokedexException("false exception"));
@@ -38,8 +45,27 @@ public class IPokedexTest {
 			
 		when(pokedex.getPokemon(0))
 			.thenReturn(bulbizzare);
+		
+
 		/**/
 	}
+	private void setOrderedPokeListMock(){
+		_pokeListOrderedByIndex = new ArrayList<Pokemon>();
+		_pokeListOrderedByIndex.add(bulbizzare);
+		_pokeListOrderedByIndex.add(aquali);
+		when(pokedex.getPokemons(PokemonComparators.NAME)).thenReturn(_pokeListOrderedByName);
+		
+		_pokeListOrderedByName = new ArrayList<Pokemon>();
+		_pokeListOrderedByName.add(bulbizzare);
+		_pokeListOrderedByName.add(aquali);
+		when(pokedex.getPokemons(PokemonComparators.INDEX)).thenReturn(_pokeListOrderedByIndex);
+		
+		_pokeListOrderedByCp = new ArrayList<Pokemon>();
+		_pokeListOrderedByCp.add(bulbizzare);
+		_pokeListOrderedByCp.add(aquali);
+		when(pokedex.getPokemons(PokemonComparators.INDEX)).thenReturn(_pokeListOrderedByCp);
+	}
+	
 	@Before 
 	public void setUp() throws PokedexException{
 		bulbizzare = new Pokemon(
@@ -67,9 +93,7 @@ public class IPokedexTest {
 				1//final double iv
 			);
 		mockSetUp();
-		
 	}
-	
 	
 	@Test
 	public void testAddPokemon() throws PokedexException{
@@ -89,6 +113,42 @@ public class IPokedexTest {
 	public void testGetUnvalidPokemon() throws PokedexException{
 		pokedex.getPokemon(-1);
 	}
-	public void testPokemonsOrdered(){
+	
+	
+	
+	
+	
+	@Test
+	public void testPokemonsOrderedByName(){
+		List<Pokemon> pokeListOrdered = pokedex.getPokemons(PokemonComparators.NAME);
+		if(	apiLocale == Locale.ENGLISH){
+			List<Pokemon> testPokeListOrdered = new ArrayList<Pokemon>();
+			testPokeListOrdered.add(bulbizzare);
+			testPokeListOrdered.add(aquali);
+			assertEquals(testPokeListOrdered,pokeListOrdered);
+		}else if(	apiLocale == Locale.FRENCH){
+			List<Pokemon> testPokeListOrdered = new ArrayList<Pokemon>();
+			testPokeListOrdered.add(aquali);
+			testPokeListOrdered.add(bulbizzare);
+			assertEquals(testPokeListOrdered,pokeListOrdered);
+		}else{
+			fail("the LOCALE attribute was not EN or FR, code the test for other language");
+		}
+	}
+	@Test
+	public void testPokemonsOrderedByCp(){
+		List<Pokemon> pokeListOrdered = pokedex.getPokemons(PokemonComparators.CP);
+		List<Pokemon> testPokeListOrdered = new ArrayList<Pokemon>();
+		testPokeListOrdered.add(bulbizzare);
+		testPokeListOrdered.add(aquali);
+		assertEquals(testPokeListOrdered,pokeListOrdered);
+	}
+	@Test
+	public void testPokemonsOrderedByIndex(){
+		List<Pokemon> pokeListOrdered = pokedex.getPokemons(PokemonComparators.INDEX);
+		List<Pokemon> testPokeListOrdered = new ArrayList<Pokemon>();
+		testPokeListOrdered.add(bulbizzare);
+		testPokeListOrdered.add(aquali);
+		assertEquals(testPokeListOrdered,pokeListOrdered);
 	}
 }

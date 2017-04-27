@@ -11,7 +11,6 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
-import org.mockito.stubbing.Answer;
 
 import fr.univavignon.pokedex.imp.PokemonMetadataProvider;
 import java.util.Locale;
@@ -20,6 +19,9 @@ public class IPokemonMetadataProviderTest {
 	
 	private PokemonMetadata bulbizzare;
 	private PokemonMetadata aquali;
+	/**
+	 * Try to modify the api to get this attribute from it 
+	 */
 	private Locale apiLocale = Locale.ENGLISH;
 	@Mock
 	private IPokemonMetadataProvider pokemonMetadataProvider;

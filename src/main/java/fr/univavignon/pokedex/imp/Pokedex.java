@@ -1,6 +1,8 @@
 package fr.univavignon.pokedex.imp;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
@@ -67,7 +69,9 @@ public class Pokedex implements IPokedex {
 
 	@Override
 	public List<Pokemon> getPokemons(Comparator<Pokemon> order) {
-		return null;
+		List<Pokemon> pokeList = this.getPokemons();
+		Collections.sort(pokeList,order);
+		return pokeList;
 	}
 
 }
