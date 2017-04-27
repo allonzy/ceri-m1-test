@@ -20,7 +20,7 @@ public class IPokemonMetadataProviderTest {
 	
 	private PokemonMetadata bulbizzare;
 	private PokemonMetadata aquali;
-	private Locale apiLocale = Locale.ENGLISH;;
+	private Locale apiLocale = Locale.ENGLISH;
 	@Mock
 	private IPokemonMetadataProvider pokemonMetadataProvider;
 	@Rule public MockitoRule mockitoRule = MockitoJUnit.rule();
@@ -31,8 +31,8 @@ public class IPokemonMetadataProviderTest {
 			.thenReturn(new PokemonMetadata(
 				0,//final int index,
 				"Bulbasaur",//final String name,
-				126,//final int attack,
-				126,//final int defense,
+				118,//final int attack,
+				118,//final int defense,
 				90//final int stamina,
 			)
 		);
