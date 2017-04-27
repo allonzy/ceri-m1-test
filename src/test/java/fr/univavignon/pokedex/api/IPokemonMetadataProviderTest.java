@@ -45,7 +45,7 @@ public class IPokemonMetadataProviderTest {
 				260//final int stamina,
 				)
 		);
-		when(PokemonMetadataProvider.getLocale()).thenReturn(Locale.FRENCH);
+		when(PokemonMetadataProvider.getLocale()).thenReturn(Locale.ENGLISH);
 		/**/
 	}
 
