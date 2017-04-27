@@ -15,11 +15,17 @@ import java.util.Locale;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
+import fr.univavignon.pokedex.imp.Pokedex;
+
 public class IPokedexTest {
 	
 	@Mock
 	private IPokedex pokedex;
-		
+	@Mock
+	private IPokemonMetadataProvider pokemonMetadataProvider;
+	@Mock
+	IPokemonFactory pokemonFactory;
+	
 	@Rule public MockitoRule mockitoRule = MockitoJUnit.rule();
 	/**
 	 * Try to modify the api to get this attribute from it 
@@ -93,6 +99,7 @@ public class IPokedexTest {
 				1//final double iv
 			);
 		mockSetUp();
+		pokedex = new Pokedex(pokemonMetadataProvider,pokemonFactory);
 	}
 	
 	@Test
