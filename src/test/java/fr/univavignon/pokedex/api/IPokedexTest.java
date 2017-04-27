@@ -38,7 +38,6 @@ public class IPokedexTest {
 	private List<Pokemon> _pokeListOrderedByName;
 	private List<Pokemon> _pokeListOrderedByCp;
 	public void mockSetUp() throws PokedexException{
-		setOrderedPokeListMock();
 		/**/
 		when(pokedex.getPokemon(-1))
 			.thenThrow(new PokedexException("false exception"));
@@ -51,7 +50,7 @@ public class IPokedexTest {
 			
 		when(pokedex.getPokemon(0))
 			.thenReturn(bulbizzare);
-		
+		setOrderedPokeListMock();
 
 		/**/
 	}
@@ -59,12 +58,12 @@ public class IPokedexTest {
 		_pokeListOrderedByIndex = new ArrayList<Pokemon>();
 		_pokeListOrderedByIndex.add(bulbizzare);
 		_pokeListOrderedByIndex.add(aquali);
-		when(pokedex.getPokemons(PokemonComparators.NAME)).thenReturn(_pokeListOrderedByName);
+		when(pokedex.getPokemons(PokemonComparators.NAME)).thenReturn(_pokeListOrderedByIndex);
 		
 		_pokeListOrderedByName = new ArrayList<Pokemon>();
 		_pokeListOrderedByName.add(bulbizzare);
 		_pokeListOrderedByName.add(aquali);
-		when(pokedex.getPokemons(PokemonComparators.INDEX)).thenReturn(_pokeListOrderedByIndex);
+		when(pokedex.getPokemons(PokemonComparators.INDEX)).thenReturn(_pokeListOrderedByName);
 		
 		_pokeListOrderedByCp = new ArrayList<Pokemon>();
 		_pokeListOrderedByCp.add(bulbizzare);
