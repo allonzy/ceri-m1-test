@@ -1,5 +1,6 @@
 package fr.univavignon.pokedex.imp;
 import java.io.IOException;
+import java.util.Locale;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -14,9 +15,9 @@ public class PokemonMetadataProvider implements IPokemonMetadataProvider{
 	 */
 	private static final String RESSOURCE_URL = "https://raw.githubusercontent.com/PokemonGoF/PokemonGo-Bot/master/data/pokemon.json";
 	/**
-	 * Not in use for the moment but stored here to remember the language of the API
+	 * The language of the API
 	 */
-	private static final String LOCALE = "ENG" ;
+	public static final Locale LOCALE = Locale.ENGLISH;
 	@Override
 	public PokemonMetadata getPokemonMetadata(int index) throws PokedexException {
 		try {
