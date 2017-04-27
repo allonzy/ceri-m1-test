@@ -8,6 +8,9 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
+
+import fr.univavignon.pokedex.imp.PokemonFactory;
+
 import static org.mockito.Mockito.*;
 
 import java.util.Locale;
@@ -15,6 +18,8 @@ import java.util.Locale;
 public class IPokemonFactoryTest {
 	@Mock
 	private IPokemonFactory pokemonFactory;
+	@Mock
+	private IPokemonMetadataProvider pokemonMetadataProvider;
 	private Locale apiLocale = Locale.ENGLISH;
 	@Rule public MockitoRule mockitoRule = MockitoJUnit.rule();
 	public Pokemon bulbizzare;
@@ -41,8 +46,8 @@ public class IPokemonFactoryTest {
 			.thenReturn(new Pokemon(
 				133,//final int index,
 				"Vaporeon",//final String name,
-				186,//final int attack,
-				168,//final int defense,
+				205,//final int attack,
+				177,//final int defense,
 				260,//final int stamina,
 				2729,//final int cp,
 				202,//final int hp,
@@ -52,11 +57,32 @@ public class IPokemonFactoryTest {
 			)	
 		);
 		/**/
+		when(pokemonMetadataProvider.getPokemonMetadata(0))
+		.thenReturn(new PokemonMetadata(
+			0,//final int index,
+			"Bulbasaur",//final String name,
+			118,//final int attack,
+			118,//final int defense,
+			90//final int stamina,
+		)
+		);
+		when(pokemonMetadataProvider.getPokemonMetadata(133))
+			.thenReturn(new PokemonMetadata(
+				133,//final int index,
+				"Vaporeon",//final String name,
+				205,//final int attack,
+				177,//final int defense,
+				260//final int stamina,
+				)
+		); 
+		/**/
 	}
 	@Before
 	public void setUp() throws PokedexException{
+		
+		
 		mockSetUp();
-
+		pokemonFactory = new PokemonFactory(pokemonMetadataProvider);
 		bulbizzare = pokemonFactory.createPokemon(0, 613, 64, 4000, 4);
 		aquali = pokemonFactory.createPokemon(133, 2729, 202, 5000, 4);
 	}
@@ -89,10 +115,10 @@ public class IPokemonFactoryTest {
 		assertEquals(4,aquali.getCandy());
 
 		assertEquals(118,bulbizzare.getAttack());
-		assertEquals(186,aquali.getAttack());
+		assertEquals(205,aquali.getAttack());
 
 		assertEquals(118,bulbizzare.getDefense());
-		assertEquals(168,aquali.getDefense());
+		assertEquals(177,aquali.getDefense());
 
 		assertEquals(90,bulbizzare.getStamina());
 		assertEquals(260,aquali.getStamina());

@@ -19,7 +19,8 @@ class PokemonStatCalculator {
 	public int generateStamina(){
 		return pokemonMetadata.getStamina();
 	}
-	public int generateIV(int attack, int defense){
+	public double generateIV(int stamina,int attack, int defense){
+		pokemonMetadata.getName();
 		return -1;
 	}
 }

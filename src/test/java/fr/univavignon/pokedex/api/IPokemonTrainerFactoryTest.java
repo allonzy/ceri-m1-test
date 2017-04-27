@@ -4,6 +4,8 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
+import fr.univavignon.pokedex.imp.PokemonTrainerFactory;
+
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 
@@ -23,6 +25,10 @@ public class IPokemonTrainerFactoryTest {
 	@Rule public MockitoRule mockitoRule = MockitoJUnit.rule();
 
 	@Before
+	public void setUp(){
+		mockSetUp();
+		pokemonTrainerFactory = new PokemonTrainerFactory();
+	}
 	public void mockSetUp(){
 		when(pokemonTrainerFactory.createTrainer("red", Team.MYSTIC, pokedexFactory))
 			.thenReturn(new PokemonTrainer("red",Team.MYSTIC,pokedex));

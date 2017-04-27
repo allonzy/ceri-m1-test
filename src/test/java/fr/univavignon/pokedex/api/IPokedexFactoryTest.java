@@ -7,6 +7,8 @@ import org.junit.*;
 import org.mockito.*;
 import org.mockito.junit.*;
 
+import fr.univavignon.pokedex.imp.PokedexFactory;
+
 public class IPokedexFactoryTest {
 	@Mock
 	private IPokedexFactory pokedexFactory;
@@ -23,8 +25,9 @@ public class IPokedexFactoryTest {
 	@Rule public MockitoRule mockitoRule = MockitoJUnit.rule();
 	
 	@Before public void setUp() throws PokedexException{
-		//pokedexFactory = new PokedexFactory();
 		mockSetUp();
+		pokedexFactory = new PokedexFactory();
+
 	}
 	public void mockSetUp(){
 		when(pokedexFactory.createPokedex(metadataProvider,pokemonFactory))
