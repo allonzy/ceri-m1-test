@@ -49,7 +49,7 @@ public class IPokemonMetadataProviderTest {
 	public void setUp() throws PokedexException {
 		mockSetUp();
 		pokemonMetadataProvider = new PokemonMetadataProvider();
-		bulbizzare = pokemonMetadataProvider.getPokemonMetadata(1);
+		bulbizzare = pokemonMetadataProvider.getPokemonMetadata(0);
 		aquali = pokemonMetadataProvider.getPokemonMetadata(133);
 	}
 	@Test

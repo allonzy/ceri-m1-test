@@ -13,6 +13,10 @@ public class PokemonMetadataProvider implements IPokemonMetadataProvider{
 	 * and all the code for data type change
 	 */
 	private static final String RESSOURCE_URL = "https://raw.githubusercontent.com/PokemonGoF/PokemonGo-Bot/master/data/pokemon.json";
+	/**
+	 * Not in use for the moment but stored here to remember the language of the API
+	 */
+	private static final String LOCALE = "ENG" ;
 	@Override
 	public PokemonMetadata getPokemonMetadata(int index) throws PokedexException {
 		try {
@@ -29,7 +33,7 @@ public class PokemonMetadataProvider implements IPokemonMetadataProvider{
 	 * @return
 	 */
 	private PokemonMetadata create(JsonObject object){
-		int index = Integer.parseInt(object.get("Number").getAsString() );
+		int index = Integer.parseInt(object.get("Number").getAsString());
 		String name = object.get("Name").getAsString();
 		int attack = object.get("BaseAttack").getAsInt();
 		int defense = object.get("BaseDefense").getAsInt();
