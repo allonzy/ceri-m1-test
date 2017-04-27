@@ -11,6 +11,7 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
+import org.mockito.stubbing.Answer;
 
 import fr.univavignon.pokedex.imp.PokemonMetadataProvider;
 import java.util.Locale;
@@ -26,7 +27,6 @@ public class IPokemonMetadataProviderTest {
 	
 	public void mockSetUp() throws PokedexException{
 		
-
 		when(pokemonMetadataProvider.getPokemonMetadata(0))
 			.thenReturn(new PokemonMetadata(
 				0,//final int index,
@@ -45,9 +45,10 @@ public class IPokemonMetadataProviderTest {
 				260//final int stamina,
 				)
 		);
-		when(PokemonMetadataProvider.LOCALE).thenReturn(Locale.ENGLISH);
+		when(PokemonMetadataProvider.getLocale()).thenReturn(Locale.FRENCH);
 		/**/
 	}
+
 	@Before
 	public void setUp() throws PokedexException {
 		mockSetUp();
@@ -63,16 +64,15 @@ public class IPokemonMetadataProviderTest {
 		assertEquals(0,bulbizzare.getIndex());
 		assertEquals(133,aquali.getIndex());
 
-		if(PokemonMetadataProvider.LOCALE == Locale.ENGLISH){
+		if(PokemonMetadataProvider.getLocale() == Locale.ENGLISH){
 			assertEquals("Bulbasaur",bulbizzare.getName());
 			assertEquals("Vaporeon",aquali.getName());
-		}else if(PokemonMetadataProvider.LOCALE == Locale.FRENCH){
+		}else if(PokemonMetadataProvider.getLocale() == Locale.FRENCH){
 			assertEquals("Bulbizarre",bulbizzare.getName());
 			assertEquals("Aquali",aquali.getName());
 		}else{
 			fail("the LOCALE attribute was not EN or FR, code the test for other language");
 		}
-
 		assertEquals(126,bulbizzare.getAttack());
 		assertEquals(186,aquali.getAttack());
 
