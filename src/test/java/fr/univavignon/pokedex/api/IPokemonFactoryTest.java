@@ -24,7 +24,7 @@ public class IPokemonFactoryTest {
 		when(pokemonFactory.createPokemon(0, 613, 64, 4000, 4))
 			.thenReturn(new Pokemon(
 				0,//final int index,
-				"Bulbizzare",//final String name,
+				"Bulbasaur",//final String name,
 				126,//final int attack,
 				126,//final int defense,
 				90,//final int stamina,
@@ -38,7 +38,7 @@ public class IPokemonFactoryTest {
 		when(pokemonFactory.createPokemon(133, 2729, 202, 5000, 4))
 			.thenReturn(new Pokemon(
 				133,//final int index,
-				"Aquali",//final String name,
+				"Vaporeon",//final String name,
 				186,//final int attack,
 				168,//final int defense,
 				260,//final int stamina,

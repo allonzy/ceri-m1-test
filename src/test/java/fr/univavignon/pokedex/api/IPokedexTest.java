@@ -44,7 +44,7 @@ public class IPokedexTest {
 	public void setUp() throws PokedexException{
 		bulbizzare = new Pokemon(
 				0,//final int index,
-				"Bulbizzare",//final String name,
+				"Vaporeon",//final String name,
 				126,//final int attack,
 				126,//final int defense,
 				90,//final int stamina,
