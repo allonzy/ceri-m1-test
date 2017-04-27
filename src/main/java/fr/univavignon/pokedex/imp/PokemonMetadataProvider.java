@@ -18,10 +18,9 @@ public class PokemonMetadataProvider implements IPokemonMetadataProvider{
 	 * The language of the API
 	 */
 	private static final Locale LOCALE = Locale.ENGLISH;
-	public static Locale getLocale(){
+	public Locale getLocale(){
 		return LOCALE;
 	}
-
 	@Override
 	public PokemonMetadata getPokemonMetadata(int index) throws PokedexException {
 		try {
