@@ -27,7 +27,7 @@ public class IPokemonMetadataProviderTest {
 
 		when(pokemonMetadataProvider.getPokemonMetadata(0))
 			.thenReturn(new PokemonMetadata(
-				1,//final int index,
+				0,//final int index,
 				"Bulbasaur",//final String name,
 				126,//final int attack,
 				126,//final int defense,
