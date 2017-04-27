@@ -58,17 +58,17 @@ public class IPokedexTest {
 		_pokeListOrderedByIndex = new ArrayList<Pokemon>();
 		_pokeListOrderedByIndex.add(bulbizzare);
 		_pokeListOrderedByIndex.add(aquali);
-		when(pokedex.getPokemons(PokemonComparators.NAME)).thenReturn(_pokeListOrderedByIndex);
+		when(pokedex.getPokemons(PokemonComparators.INDEX)).thenReturn(_pokeListOrderedByIndex);
 		
 		_pokeListOrderedByName = new ArrayList<Pokemon>();
 		_pokeListOrderedByName.add(bulbizzare);
 		_pokeListOrderedByName.add(aquali);
-		when(pokedex.getPokemons(PokemonComparators.INDEX)).thenReturn(_pokeListOrderedByName);
+		when(pokedex.getPokemons(PokemonComparators.NAME)).thenReturn(_pokeListOrderedByName);
 		
 		_pokeListOrderedByCp = new ArrayList<Pokemon>();
 		_pokeListOrderedByCp.add(bulbizzare);
 		_pokeListOrderedByCp.add(aquali);
-		when(pokedex.getPokemons(PokemonComparators.INDEX)).thenReturn(_pokeListOrderedByCp);
+		when(pokedex.getPokemons(PokemonComparators.CP)).thenReturn(_pokeListOrderedByCp);
 	}
 	
 	@Before 
@@ -149,7 +149,7 @@ public class IPokedexTest {
 		testPokeListOrdered.add(aquali);
 		assertEquals(testPokeListOrdered,pokeListOrdered);
 	}
-	@Test
+	
 	public void testPokemonsOrderedByIndex(){
 		List<Pokemon> pokeListOrdered = pokedex.getPokemons(PokemonComparators.INDEX);
 		List<Pokemon> testPokeListOrdered = new ArrayList<Pokemon>();
