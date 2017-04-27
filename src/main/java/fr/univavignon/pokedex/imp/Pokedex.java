@@ -20,7 +20,7 @@ public class Pokedex implements IPokedex {
 	/** required to create pokemon **/
 	private IPokemonFactory pokemonFactory;
 	/** stored to store all the pokemon */
-	protected HashMap<Integer,Pokemon> pokemons;
+	protected List<Pokemon> pokemons;
 	/**
 	 * 
 	 * @param pokemonMetadataProvider
@@ -29,6 +29,7 @@ public class Pokedex implements IPokedex {
 	public Pokedex(IPokemonMetadataProvider pokemonMetadataProvider,IPokemonFactory pokemonFactory){
 		this.pokemonMetadataProvider = pokemonMetadataProvider;
 		this.pokemonFactory = pokemonFactory;
+		this.pokemons = new ArrayList<Pokemon>();
 	}
 	/**
 	 * Decorate {@link #pokemonMetadataProvider}
@@ -52,18 +53,23 @@ public class Pokedex implements IPokedex {
 
 	@Override
 	public int addPokemon(Pokemon pokemon) {
-		pokemons.put(pokemon.getIndex(),pokemon);
-		return 0;
+		pokemons.add(pokemon);
+		return pokemons.indexOf(pokemon);
 	}
 
 	@Override
 	public Pokemon getPokemon(int id) throws PokedexException {
-		return pokemons.get(id);
+		try{
+			return pokemons.get(id);
+		}catch(ArrayIndexOutOfBoundsException e1){
+			throw new PokedexException("Not a valid pokedex identifier(array out of bound)");
+		}
+
 	}
 
 	@Override
 	public List<Pokemon> getPokemons() {
-		return new ArrayList<Pokemon>(pokemons.values());
+		return pokemons;
 	}
 
 	@Override

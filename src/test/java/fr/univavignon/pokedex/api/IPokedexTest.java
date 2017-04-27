@@ -97,8 +97,8 @@ public class IPokedexTest {
 				4,//final int candy,
 				1//final double iv
 			);
-		mockSetUp();
-		//pokedex = new Pokedex(pokemonMetadataProvider,pokemonFactory);
+		//mockSetUp();
+		pokedex = new Pokedex(pokemonMetadataProvider,pokemonFactory);
 	}
 	
 	@Test
@@ -126,6 +126,8 @@ public class IPokedexTest {
 	
 	@Test
 	public void testPokemonsOrderedByName(){
+		pokedex.addPokemon(bulbizzare);
+		pokedex.addPokemon(aquali);
 		List<Pokemon> pokeListOrdered = pokedex.getPokemons(PokemonComparators.NAME);
 		if(	apiLocale == Locale.ENGLISH){
 			List<Pokemon> testPokeListOrdered = new ArrayList<Pokemon>();
@@ -143,14 +145,18 @@ public class IPokedexTest {
 	}
 	@Test
 	public void testPokemonsOrderedByCp(){
+		pokedex.addPokemon(aquali);
+		pokedex.addPokemon(bulbizzare);
 		List<Pokemon> pokeListOrdered = pokedex.getPokemons(PokemonComparators.CP);
 		List<Pokemon> testPokeListOrdered = new ArrayList<Pokemon>();
 		testPokeListOrdered.add(bulbizzare);
 		testPokeListOrdered.add(aquali);
 		assertEquals(testPokeListOrdered,pokeListOrdered);
 	}
-	
+	@Test
 	public void testPokemonsOrderedByIndex(){
+		pokedex.addPokemon(aquali);
+		pokedex.addPokemon(bulbizzare);
 		List<Pokemon> pokeListOrdered = pokedex.getPokemons(PokemonComparators.INDEX);
 		List<Pokemon> testPokeListOrdered = new ArrayList<Pokemon>();
 		testPokeListOrdered.add(bulbizzare);
