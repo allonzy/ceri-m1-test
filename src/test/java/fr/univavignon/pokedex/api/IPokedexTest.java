@@ -99,7 +99,7 @@ public class IPokedexTest {
 				1//final double iv
 			);
 		mockSetUp();
-		pokedex = new Pokedex(pokemonMetadataProvider,pokemonFactory);
+		//pokedex = new Pokedex(pokemonMetadataProvider,pokemonFactory);
 	}
 	
 	@Test
