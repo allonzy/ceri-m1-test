@@ -27,8 +27,8 @@ public class IPokemonFactoryTest {
 			.thenReturn(new Pokemon(
 				0,//final int index,
 				"Bulbasaur",//final String name,
-				126,//final int attack,
-				126,//final int defense,
+				118,//final int attack,
+				118,//final int defense,
 				90,//final int stamina,
 				613,//final int cp,
 				64,//final int hp,
@@ -88,10 +88,10 @@ public class IPokemonFactoryTest {
 		assertEquals(4,bulbizzare.getCandy());
 		assertEquals(4,aquali.getCandy());
 
-		assertEquals(126,bulbizzare.getAttack());
+		assertEquals(118,bulbizzare.getAttack());
 		assertEquals(186,aquali.getAttack());
 
-		assertEquals(126,bulbizzare.getDefense());
+		assertEquals(118,bulbizzare.getDefense());
 		assertEquals(168,aquali.getDefense());
 
 		assertEquals(90,bulbizzare.getStamina());

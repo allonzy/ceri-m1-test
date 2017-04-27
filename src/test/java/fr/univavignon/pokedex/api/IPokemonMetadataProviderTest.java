@@ -74,10 +74,10 @@ public class IPokemonMetadataProviderTest {
 		}else{
 			fail("the LOCALE attribute was not EN or FR, code the test for other language");
 		}
-		assertEquals(126,bulbizzare.getAttack());
+		assertEquals(118,bulbizzare.getAttack());
 		assertEquals(186,aquali.getAttack());
 
-		assertEquals(126,bulbizzare.getDefense());
+		assertEquals(118,bulbizzare.getDefense());
 		assertEquals(186,aquali.getDefense());
 
 		assertEquals(90,bulbizzare.getStamina());
